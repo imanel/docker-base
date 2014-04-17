@@ -6,3 +6,9 @@ RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
+
+# Update apt cache and install base packages
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y \
+  python-software-properties \
+  software-properties-common
