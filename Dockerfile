@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:13.10
 MAINTAINER Bernard Potocki <bernard.potocki@imanel.org>
 
 # Ensure UTF-8
@@ -22,13 +22,7 @@ ADD config /docker/config
 ADD scripts /docker/scripts
 RUN chmod 755 /docker/scripts/*.sh
 
-RUN rm -rf /etc/supervisor && \
-    mv /docker/config/supervisor /etc/ && \
-    mkdir -p /docker/log/supervisor
-
 # Set SSH password - should be changed if port will be exposed
 RUN echo 'root:secret' | chpasswd
-
-VOLUME ["/docker/log"]
 
 CMD ["/docker/scripts/run.sh"]
