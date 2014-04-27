@@ -6,6 +6,9 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
+# Ensure loading env variables via SSH
+RUN ln -s /etc/container_environment.sh /etc/profile.d/
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y --no-install-recommends && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
