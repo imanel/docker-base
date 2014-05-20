@@ -12,7 +12,7 @@ RUN ln -s /etc/container_environment.sh /etc/profile.d/
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y --no-install-recommends && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      python-software-properties
+      software-properties-common
 
 # Install serf - http://www.serfdom.io/
 ADD files/serf-0.5.0_linux_amd64 /usr/bin/serf
