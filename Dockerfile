@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.9
+FROM phusion/baseimage:0.9.10
 MAINTAINER Bernard Potocki <bernard.potocki@imanel.org>
 
 # Ensure UTF-8
