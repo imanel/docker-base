@@ -10,7 +10,6 @@ ENV LC_ALL en_US.UTF-8
 RUN ln -s /etc/container_environment.sh /etc/profile.d/
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y --no-install-recommends && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
       software-properties-common
 
