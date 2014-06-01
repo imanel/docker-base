@@ -14,11 +14,6 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
       software-properties-common
 
-# Install serf - http://www.serfdom.io/
-ADD files/serf-0.5.0_linux_amd64 /usr/bin/serf
-ADD /services/serf /etc/service/serf
-ADD /etc/serf /etc/serf
-
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh && \
     rm /etc/my_init.d/00_regen_ssh_host_keys.sh
 

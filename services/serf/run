@@ -1,2 +1,0 @@
-#!/bin/sh
-exec serf agent -config-dir=/etc/serf -encrypt="$SERF_CLUSTER_KEY" #-join $SERF_CLUSTER_IP
