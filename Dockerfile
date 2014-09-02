@@ -1,22 +1,17 @@
-FROM phusion/baseimage:0.9.10
+FROM ubuntu:14.04
 MAINTAINER Bernard Potocki <bernard.potocki@imanel.org>
 
 # Ensure UTF-8
+RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
-# Ensure loading env variables via SSH
-RUN ln -s /etc/container_environment.sh /etc/profile.d/
+# Script to clean after each installation
+ADD docker-cleanup /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-cleanup
 
+# Install couple base packages
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-      software-properties-common
-
-RUN /etc/my_init.d/00_regen_ssh_host_keys.sh && \
-    rm /etc/my_init.d/00_regen_ssh_host_keys.sh
-
-# TODO: Remove it
-RUN /usr/sbin/enable_insecure_key
-
-CMD ["/sbin/my_init"]
+    apt-get install -y software-properties-common && \
+    docker-cleanup
