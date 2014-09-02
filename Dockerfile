@@ -13,5 +13,5 @@ RUN chmod +x /usr/local/bin/docker-cleanup
 
 # Install couple base packages
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
+    apt-get install -y software-properties-common wget && \
     docker-cleanup
